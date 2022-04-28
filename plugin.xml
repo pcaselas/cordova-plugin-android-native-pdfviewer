@@ -16,7 +16,7 @@
             <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
         </config-file>
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
-            <activity android:name="xyz.guutong.androidpdfviewer.PdfViewActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+            <activity android:name="xyz.guutong.androidpdfviewer.PdfViewActivity" android:theme="@style/ThemeOverlay.AppCompat.ActionBar"/>
         </config-file>
         <source-file src="src/android/pdfviewer-library.aar" target-dir="libs"/>
         <framework src="src/android/AndroidNativePDFViewer.gradle" custom="true" type="gradleReference" />
