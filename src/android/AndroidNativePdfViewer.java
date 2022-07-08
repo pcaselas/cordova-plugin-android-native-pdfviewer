@@ -28,7 +28,8 @@ public class AndroidNativePdfViewer extends CordovaPlugin {
                 boolean showScroll = false;            
                 boolean swipeHorizontal = false;            
                 boolean showShareButton = true;            
-                boolean showCloseButton = true;            
+                boolean showCloseButton = true;    
+                String authorizationKey;        
 
                 if (options.has("headerColor")) {
                     headerColor = options.getString("headerColor");    
@@ -50,6 +51,10 @@ public class AndroidNativePdfViewer extends CordovaPlugin {
                     showCloseButton = options.getBoolean("showCloseButton");
                 }
 
+                if (options.has("authorizationKey")) {
+                    authorizationKey = options.getString("authorizationKey");
+                }
+
                 Intent intent = new Intent(cordova.getActivity(), PdfViewActivity.class);
                 intent.putExtra(PdfViewActivity.EXTRA_PDF_URL, fileUrl);
                 intent.putExtra(PdfViewActivity.EXTRA_PDF_TITLE, title);
@@ -58,6 +63,7 @@ public class AndroidNativePdfViewer extends CordovaPlugin {
                 intent.putExtra(PdfViewActivity.EXTRA_SWIPE_HORIZONTAL, swipeHorizontal);
                 intent.putExtra(PdfViewActivity.EXTRA_SHOW_SHARE_BUTTON, showShareButton);
                 intent.putExtra(PdfViewActivity.EXTRA_SHOW_CLOSE_BUTTON, showCloseButton);
+                intent.putExtra(PdfViewActivity.EXTRA_AUTHORIZATION_KEY, authorizationKey);
 
                 cordova.startActivityForResult(this, intent, 0);
                 callbackContext.success(fileUrl);
