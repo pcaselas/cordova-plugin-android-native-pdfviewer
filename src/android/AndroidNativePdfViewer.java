@@ -50,10 +50,7 @@ public class AndroidNativePdfViewer extends CordovaPlugin {
 
                 if (options.has("showCloseButton")) {
                     showCloseButton = options.getBoolean("showCloseButton");
-                }
-
-                if (options.has("authorizationKey")) {
-                   
+                } 
 
                 Intent intent = new Intent(cordova.getActivity(), PdfViewActivity.class);
                 intent.putExtra(PdfViewActivity.EXTRA_PDF_URL, fileUrl);
