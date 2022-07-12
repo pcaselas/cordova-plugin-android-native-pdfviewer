@@ -19,6 +19,7 @@ var options = {
                 showShareButton:true, 
                 showCloseButton:true, 
                 swipeHorizontal:false 
+                authorizationKey 'bearer xxxxxxxxx'
               };
               
 AndroidNativePdfViewer.openPdfUrl(url, title, options, 

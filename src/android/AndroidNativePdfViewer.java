@@ -15,6 +15,7 @@ import android.content.Intent;
  */
 public class AndroidNativePdfViewer extends CordovaPlugin {
     private CallbackContext callbackContext;
+
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         
@@ -29,7 +30,7 @@ public class AndroidNativePdfViewer extends CordovaPlugin {
                 boolean swipeHorizontal = false;            
                 boolean showShareButton = true;            
                 boolean showCloseButton = true;    
-                String authorizationKey;        
+                String authorizationKey = null;        
 
                 if (options.has("headerColor")) {
                     headerColor = options.getString("headerColor");    
@@ -52,8 +53,7 @@ public class AndroidNativePdfViewer extends CordovaPlugin {
                 }
 
                 if (options.has("authorizationKey")) {
-                    authorizationKey = options.getString("authorizationKey");
-                }
+                   
 
                 Intent intent = new Intent(cordova.getActivity(), PdfViewActivity.class);
                 intent.putExtra(PdfViewActivity.EXTRA_PDF_URL, fileUrl);
@@ -63,8 +63,11 @@ public class AndroidNativePdfViewer extends CordovaPlugin {
                 intent.putExtra(PdfViewActivity.EXTRA_SWIPE_HORIZONTAL, swipeHorizontal);
                 intent.putExtra(PdfViewActivity.EXTRA_SHOW_SHARE_BUTTON, showShareButton);
                 intent.putExtra(PdfViewActivity.EXTRA_SHOW_CLOSE_BUTTON, showCloseButton);
-                intent.putExtra(PdfViewActivity.EXTRA_AUTHORIZATION_KEY, authorizationKey);
-
+                if (options.has("authorizationKey")) {
+                    authorizationKey = options.getString("authorizationKey");
+                    intent.putExtra(PdfViewActivity.EXTRA_AUTHORIZATION_KEY, authorizationKey);
+                
+                }
                 cordova.startActivityForResult(this, intent, 0);
                 callbackContext.success(fileUrl);
                 return true;
