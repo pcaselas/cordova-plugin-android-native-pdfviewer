@@ -1,5 +1,5 @@
-repositories{    
-  jcenter()
+repositories{
+  mavenCentral()
   flatDir {
       dirs 'libs'
    }
@@ -8,6 +8,7 @@ repositories{
 dependencies {
     implementation(name:'pdfviewer-library', ext:'aar')
     implementation 'com.github.barteksc:android-pdf-viewer:2.8.2'
+    implementation 'com.github.barteksc:pdfium-android:+'
     implementation 'com.android.support:appcompat-v7:27.+'
     implementation 'com.android.support:design:27.+'
 }
